@@ -47,7 +47,13 @@ app.post('/api/pdf', (req, res) => {
   const page = pug.renderFile('./views/pdf.pug', {year: new Date().getFullYear(), ...body});
   const fileName = `${urlify(body.name)}-${generateHash(6)}`;
 
-  pdf.create(page)
+  pdf.create(page, {
+      childProcessOptions: {
+        env: {
+          OPENSSL_CONF: '/dev/null',
+        },
+      }
+    })
     .toFile(`./public/files/${fileName}.pdf`, (error, response) => {
       if (error) {
         console.log(error);
