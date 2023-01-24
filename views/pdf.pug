@@ -1,0 +1,24 @@
+doctype html
+html(land="eng")
+  head
+    title= pageTitle
+    style
+      include ../public/css/pdf.css
+  body
+    main.main
+      header.main-header
+        figure.logo
+          img(src='http://localhost:3001/images/perceptyx.png' width='140' alt='Perceptyx')
+      section.welcome
+        h2 Welcome #{name}!
+        p These are your details: 
+        ul
+          li Country: #{country}
+          li Topic: #{topic}
+      section.content 
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ducimus natus tenetur repellat magnam facere, aliquid minus nostrum ipsum quis eveniet recusandae eum sed amet ipsa ratione fuga! Dicta, deleniti!
+        p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque magni, quo facere dolore harum consequuntur provident itaque, ipsam, natus iste cum iure cupiditate id alias quam! Adipisci eos accusamus ipsum.
+        p Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia beatae placeat velit dolore, voluptas ab ex dolorum quis doloribus ea inventore, eum obcaecati. Magnam provident exercitationem possimus? Omnis, nisi autem!
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque rem assumenda unde ipsum eveniet earum. Ullam id tenetur alias reiciendis numquam eligendi sunt quis fugiat officiis vitae deserunt, delectus harum!
+      footer.main-footer
+        p &copy; #{year} Perceptyx

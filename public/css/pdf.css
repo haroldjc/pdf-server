@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  margin: auto;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.main-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.logo {
+  margin: 0;
+  width: 180px;
+}
+
+.content p {
+  line-height: 1.5em;
+}
+
+.welcome li + li {
+  margin-top: 0.5em;
+}
+
+.main-footer {
+  border-top: 1px solid #ccc;
+  margin-top: 40px;
+}
