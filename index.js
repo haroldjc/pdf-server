@@ -2,7 +2,6 @@ const {req, res} = require('express');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const fs = require('fs');
 const pdf = require('html-pdf');
 const pug = require('pug');
 
@@ -51,7 +50,7 @@ app.post('/api/pdf', (req, res) => {
   pdf.create(page)
     .toFile(`./public/files/${fileName}.pdf`, (error, response) => {
       if (error) {
-        return response.status(400).json({
+        return res.status(400).json({
           error: 'Unable no generate PDF'
         });
       } else {
