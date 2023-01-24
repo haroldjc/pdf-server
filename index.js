@@ -50,6 +50,7 @@ app.post('/api/pdf', (req, res) => {
   pdf.create(page)
     .toFile(`./public/files/${fileName}.pdf`, (error, response) => {
       if (error) {
+        console.log(error);
         return res.status(400).json({
           error: 'Unable no generate PDF'
         });
