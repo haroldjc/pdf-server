@@ -52,7 +52,8 @@ app.post('/api/pdf', (req, res) => {
       if (error) {
         console.log(error);
         return res.status(400).json({
-          error: 'Unable no generate PDF'
+          error: 'Unable no generate PDF',
+          message: error.message
         });
       } else {
         res.json({
