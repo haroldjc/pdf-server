@@ -37,14 +37,17 @@ const urlify = value => {
 /* PDF API */
 app.post('/api/pdf', (req, res) => {
   const body = req.body;
+  const host = `${req.protocol}://${req.get('host')}`;
 
-  if (!Object.keys(body).includes('name', 'country', 'topic')) {
+  console.log(Object.keys(body));
+
+  if (!Object.keys(body).includes('name')) {
     return res.status(400).json({
       error: 'Content missing'
     });
   }
 
-  const page = pug.renderFile('./views/pdf.pug', {year: new Date().getFullYear(), ...body});
+  const page = pug.renderFile('./views/pdf.pug', {year: new Date().getFullYear(), host: host, ...body});
   const fileName = `${urlify(body.name)}-${generateHash(6)}`;
 
   pdf.create(page, {
@@ -56,14 +59,13 @@ app.post('/api/pdf', (req, res) => {
     })
     .toFile(`./public/files/${fileName}.pdf`, (error, response) => {
       if (error) {
-        console.log(error);
         return res.status(400).json({
-          error: 'Unable no generate PDF',
-          message: error.message
+          error: 'Unable no generate PDF'
         });
       } else {
+        console.log(response.filename);
         res.json({
-          pdfUrl: response.filename
+          pdfUrl: `${host}/files/${fileName}.pdf`
         })
       }
     });
@@ -71,7 +73,8 @@ app.post('/api/pdf', (req, res) => {
 });
 
 app.get('/page', (req, res) => {
-  res.render('pdf', {year: new Date().getFullYear()})
+  const host = `${req.protocol}://${req.get('host')}`;
+  res.render('pdf', {name: 'Miles Davis', country: 'USA', topic: 'Jazz', host: host, year: new Date().getFullYear()})
 })
 
 app.get('/', (req, res) => {

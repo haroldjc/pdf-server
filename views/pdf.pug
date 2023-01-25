@@ -8,13 +8,13 @@ html(land="eng")
     main.main
       header.main-header
         figure.logo
-          img(src='/images/perceptyx.png' width='140' alt='Perceptyx')
+          img(src=`${host}/images/perceptyx.png` width='140' alt='Perceptyx')
       section.welcome
         h2 Welcome #{name}!
         p These are your details: 
         ul
-          li Country: #{country}
-          li Topic: #{topic}
+          li Country: #[strong= country]
+          li Topic: #[strong= topic]
       section.content 
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ducimus natus tenetur repellat magnam facere, aliquid minus nostrum ipsum quis eveniet recusandae eum sed amet ipsa ratione fuga! Dicta, deleniti!
         p Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloremque magni, quo facere dolore harum consequuntur provident itaque, ipsam, natus iste cum iure cupiditate id alias quam! Adipisci eos accusamus ipsum.
